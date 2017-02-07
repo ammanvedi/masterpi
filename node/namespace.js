@@ -1,0 +1,3 @@
+var piBot = {
+    util: {}
+};

@@ -1,0 +1,16 @@
+{
+  "name": "master-pi",
+  "version": "1.0.0",
+  "description": "",
+  "main": "./node/index.js",
+  "scripts": {
+    "go": "gulp && node ./dist/pibot.js"
+  },
+  "author": "amman.vedi@gmail.com",
+  "license": "ISC",
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-concat": "^2.6.1",
+    "gulp-ssh": "^0.6.0"
+  }
+}
