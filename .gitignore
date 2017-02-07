@@ -1,0 +1,4 @@
+node-modules/
+.vscode/
+npm-debug.log
+config.pi.js
