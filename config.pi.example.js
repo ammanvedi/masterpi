@@ -6,6 +6,7 @@ module.exports = {
         username: 'pibot',
         password: 'pw'
     },
+    
     irDeviceName: 'LEGO_Single_Output'
 
 }

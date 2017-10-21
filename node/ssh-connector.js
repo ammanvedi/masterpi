@@ -1,6 +1,6 @@
-piBot.ssh = ( function( ssh, fs, config, pi ) {
+( function( ssh, fs, config, pb ) {
 
-    var piSSHConnector = function( success ) {
+    pb.piSSHConnector = function( success ) {
         var _self = this;
 
         _self.config = false;
@@ -11,7 +11,15 @@ piBot.ssh = ( function( ssh, fs, config, pi ) {
 
     }
 
-    piSSHConnector.prototype.connect = function() {
+    pb.piSSHConnector.prototype.sendCommand = function( command ) {
+        var _self = this;
+
+        if( _self.connection ) {
+            _self.connection.exec( command );
+        }
+    }
+
+    pb.piSSHConnector.prototype.connect = function() {
         var _self = this;
 
         var configs = config.ssh.host.map( function( ipAddr ) {
@@ -20,7 +28,7 @@ piBot.ssh = ( function( ssh, fs, config, pi ) {
             return newCfg;
         } );
 
-        piBot.util.asyncLoop( function( index, done ) {
+        pb.util.asyncLoop( function( index, done ) {
             // dont hate me for this 
             var __self = _self;
 
@@ -46,9 +54,8 @@ piBot.ssh = ( function( ssh, fs, config, pi ) {
 
     }
 
-    return piSSHConnector;
 
-} )( require( 'gulp-ssh' ), require( 'fs' ), require( './config.pi.js' ) );
+} )( require( 'gulp-ssh' ), require( 'fs' ), require( './config.pi.js' ), piBot );
 
 
 
